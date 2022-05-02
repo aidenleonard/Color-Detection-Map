@@ -1,33 +1,29 @@
-import cv2   # openCV computer vision for python
-import numpy as np 
-from bgr_to_hsv import bgr_to_hsv
 from Img import Img
+import numpy as np
+import cv2
 
-solar = Img('color_detection_map/SOLAR.jpg', [0,0,0],[50,50,255], -1)
-print(solar)
+solar = Img('solar','color_detection_map/SOLAR.jpg', [0,0,0],[50,50,255], -1)
+pland = Img('pland','color_detection_map/PUBLIC_LAND.jpg', [0,0,0],[50,50,255], -1)
 
 solar.read()
-print(solar)
+pland.read()
+
 solar.apply_mask()
+pland.apply_mask()
+
 solar.display_result()
+pland.display_result()
 
-#darkred = np.array([0, 0, 0])                    
-#red = np.array([50,50,255]) 
-
-#black = np.array([0,0,0])
-#nearblack = np.array([10,10,10])
-
-   #source1, source2, mask.    if pixel is source1 is in range of mask, keep. else, black 
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
 
-# cv2.imshow('Image3', img_hsv) 
+""" Hori = np.concatenate((solar.result, pland.result), axis = 1)
+Hori2 = np.concatenate((solar.mask, pland.mask), axis = 1)
 
-   # wait infinity , skip on key press
-      # close window on key press 
+cv2.imshow('H', Hori)
+cv2.imshow('V', Hori2)
 
-
-
-# cv2.imwrite("")
-# cv2."    "     IMREAD_COLOR  - no transparency   IMREAD_GRAYSCALE   - grayscale        IMREAD_UNCHANGED     - including alpha channel
-# in terminal: python -m pydoc FUNCTIONNAME             <- displays description of function
+cv2.waitKey(0)
+cv2.destroyAllWindows() """
